@@ -7,17 +7,16 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('Sending...')
-    // Demo only
     await new Promise((r) => setTimeout(r, 800))
-    setStatus('Message sent! I will get back to you soon.')
+    setStatus('Delivered! See you next page.')
   }
 
   return (
     <section id="contact" className="relative py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Let’s collaborate</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">Tell me about your project or just say hello.</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Fan Mail</h2>
+          <p className="mt-2 text-zinc-700">Send a message — cliffhangers welcome.</p>
         </div>
 
         <motion.form
@@ -28,12 +27,12 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="mt-8 grid gap-4 max-w-xl"
         >
-          <input required placeholder="Your name" className="w-full rounded-xl border border-white/30 bg-white/60 dark:bg-zinc-900/60 backdrop-blur px-4 py-3 text-zinc-900 dark:text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-          <input required type="email" placeholder="Your email" className="w-full rounded-xl border border-white/30 bg-white/60 dark:bg-zinc-900/60 backdrop-blur px-4 py-3 text-zinc-900 dark:text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-          <textarea required placeholder="Your message" rows={5} className="w-full rounded-xl border border-white/30 bg-white/60 dark:bg-zinc-900/60 backdrop-blur px-4 py-3 text-zinc-900 dark:text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+          <input required placeholder="Your name" className="w-full rounded-none border-2 border-black bg-white px-4 py-3 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-black" />
+          <input required type="email" placeholder="Your email" className="w-full rounded-none border-2 border-black bg-white px-4 py-3 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-black" />
+          <textarea required placeholder="Your message" rows={5} className="w-full rounded-none border-2 border-black bg-white px-4 py-3 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-black" />
           <div className="flex items-center gap-3">
-            <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 text-white px-5 py-3 hover:bg-zinc-800 transition">Send message</button>
-            <span className="text-sm text-zinc-600 dark:text-zinc-400">{status}</span>
+            <button type="submit" className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white ink-border transition-transform hover:-translate-y-0.5">Send</button>
+            <span className="text-sm text-zinc-700">{status}</span>
           </div>
         </motion.form>
       </div>
