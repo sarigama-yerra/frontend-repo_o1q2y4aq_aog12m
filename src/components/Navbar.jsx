@@ -1,0 +1,74 @@
+import { useState } from 'react'
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+
+const navLinks = [
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+]
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mt-4 backdrop-blur-xl bg-white/60 dark:bg-zinc-900/60 border border-white/20 dark:border-white/10 rounded-2xl shadow-xl shadow-black/5">
+          <div className="flex items-center justify-between px-4 py-3">
+            <a href="#home" className="group inline-flex items-center gap-2">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-indigo-500 via-fuchsia-500 to-cyan-400" />
+              <span className="font-semibold tracking-tight text-zinc-900 dark:text-white">Dev Portfolio</span>
+            </a>
+
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map((l) => (
+                <a key={l.href} href={l.href} className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition">
+                  {l.label}
+                </a>
+              ))}
+              <div className="h-5 w-px bg-zinc-200 dark:bg-zinc-800" />
+              <div className="flex items-center gap-3">
+                <a href="mailto:you@example.com" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="Email">
+                  <Mail className="h-5 w-5" />
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="LinkedIn">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+            </nav>
+
+            <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="Menu">
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {open && (
+            <div className="px-4 pb-4 md:hidden">
+              <div className="flex flex-col gap-2">
+                {navLinks.map((l) => (
+                  <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                    {l.label}
+                  </a>
+                ))}
+                <div className="flex items-center gap-3 pt-2">
+                  <a href="mailto:you@example.com" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="Email">
+                    <Mail className="h-5 w-5" />
+                  </a>
+                  <a href="https://github.com/" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="GitHub">
+                    <Github className="h-5 w-5" />
+                  </a>
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  )
+}
